@@ -3,10 +3,19 @@ pipeline {
         label "master"
     }
     stages {
-        stage("Production") {
-            steps {
-                //echo "Production branch"
-                sh "mvn clean package"
+        stage("clean-up"){
+            steps{
+                sh "mvn clean"
+            }
+        }
+	stage("test"){
+            steps{
+                sh "mvn test"
+            }
+        }
+	stage("package"){
+            steps{
+                sh "mvn package"
             }
         }
     }
