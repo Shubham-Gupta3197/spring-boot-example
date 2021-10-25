@@ -7,12 +7,26 @@ pipeline{
         jdk 'jdk 11'
     }
     stages{
-        stage("building"){
+        stage("clean-up"){
             steps{
-                sh "mvn clean package"
+                sh "mvn clean"
             }
         }
-
+	stage("compile"){
+            steps{
+                sh "mvn compile"
+            }
+        }
+	stage("test"){
+            steps{
+                sh "mvn test"
+            }
+        }
+	stage("package"){
+            steps{
+                sh "mvn package"
+            }
+        }
     }
     post{
         always{
