@@ -7,7 +7,11 @@ pipeline {
              jdk 'jdk 11'
         }
     stages {
-
+          stage("clean-up"){
+            steps{
+                sh "mvn clean"
+            }
+        }
         stage('Testing') {
             steps {
                 echo 'Testing the application...'
